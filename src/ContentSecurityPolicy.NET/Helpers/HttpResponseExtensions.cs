@@ -11,7 +11,7 @@ namespace ContentSecurityPolicy.NET.Helpers
         {
             if (!httpResponse.Headers.ContainsKey(HeaderKey))
             {
-                httpResponse.Headers.Add(HeaderKey, nonce); //TODO 
+                httpResponse.Headers.Add(HeaderKey, nonce);
             }
         }
 

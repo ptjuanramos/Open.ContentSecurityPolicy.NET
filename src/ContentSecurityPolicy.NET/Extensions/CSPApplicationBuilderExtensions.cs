@@ -1,10 +1,6 @@
 ﻿using ContentSecurityPolicy.NET.Helpers;
 using Microsoft.AspNetCore.Builder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace ContentSecurityPolicy.NET.Extensions
 {
@@ -14,7 +10,12 @@ namespace ContentSecurityPolicy.NET.Extensions
         {
             applicationBuilder.Use(async (ctx, next) =>
             {
-                HeaderHelper.AddCSPHeader(ctx.Response);
+                HttpResponse httpResponse = ctx.Response;
+                string nonce = "";
+
+                httpResponse.AddCSPHeader(nonce);
+                httpResponse.AddNonceToResponseItems(nonce);
+
                 await next();
             });
 

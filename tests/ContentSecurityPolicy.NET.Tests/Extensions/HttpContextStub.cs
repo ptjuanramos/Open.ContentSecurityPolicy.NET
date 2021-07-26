@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
 
-namespace ContentSecurityPolicy.NET.Tests.Helpers
+namespace ContentSecurityPolicy.NET.Tests.Extensions
 {
     class HttpContextStub : HttpContext
     {

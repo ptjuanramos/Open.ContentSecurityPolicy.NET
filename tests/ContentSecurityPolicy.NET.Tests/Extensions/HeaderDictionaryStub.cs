@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ContentSecurityPolicy.NET.Tests.Helpers
+namespace ContentSecurityPolicy.NET.Tests.Extensions
 {
     class HeaderDictionaryStub : IHeaderDictionary
     {

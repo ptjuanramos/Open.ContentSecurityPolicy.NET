@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace ContentSecurityPolicy.NET.Helpers
+namespace ContentSecurityPolicy.NET.Extensions
 {
     internal static class HttpResponseExtensions
     {

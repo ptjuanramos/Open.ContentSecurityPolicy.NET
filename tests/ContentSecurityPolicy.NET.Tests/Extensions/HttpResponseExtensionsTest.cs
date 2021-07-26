@@ -1,9 +1,9 @@
-using ContentSecurityPolicy.NET.Helpers;
+using ContentSecurityPolicy.NET.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace ContentSecurityPolicy.NET.Tests.Helpers
+namespace ContentSecurityPolicy.NET.Tests.Extensions
 {
     [TestClass]
     public class HttpResponseExtensionsTest

@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ContentSecurityPolicy.NET\ContentSecurityPolicy.NET.csproj" />
+    <ProjectReference Include="..\..\src\ContentSecurityPolicy.NET\ContentSecurityPolicy.NET.csproj" />
   </ItemGroup>
 
 </Project>

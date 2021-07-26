@@ -1,6 +1,7 @@
 ﻿using ContentSecurityPolicy.NET.Web.POC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +27,11 @@ namespace ContentSecurityPolicy.NET.Web.POC.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        private void TestMethod(StringValues values)
+        {
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

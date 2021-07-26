@@ -11,7 +11,7 @@ namespace ContentSecurityPolicy.NET.Extensions
     {
         public static void AddContentSecurity(this IServiceCollection services)
         {
-            services.
+            
         }
     }
 }

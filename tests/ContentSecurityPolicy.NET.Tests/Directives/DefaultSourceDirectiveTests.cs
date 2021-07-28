@@ -10,7 +10,7 @@ namespace ContentSecurityPolicy.NET.Tests.Directives
         [TestMethod]
         public void ConstructorShouldInitializeListValues()
         {
-            DefaultSourceDirective defaultSourceDirective = new();
+            Directive defaultSourceDirective = new("script-src", "");
             Assert.IsNotNull(defaultSourceDirective.Values);
         }
 

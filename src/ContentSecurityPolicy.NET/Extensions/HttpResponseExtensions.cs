@@ -2,7 +2,7 @@
 
 namespace ContentSecurityPolicy.NET.Extensions
 {
-    internal static class HttpResponseExtensions
+    public static class HttpResponseExtensions
     {
         const string HeaderKey = "Content-Security-Policy";
         const string NonceKey = "nonce";

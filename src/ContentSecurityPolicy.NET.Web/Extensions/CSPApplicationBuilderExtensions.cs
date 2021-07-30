@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
-namespace ContentSecurityPolicy.NET.Web.Extensions
+namespace ContentSecurityPolicy.NET.Extensions
 {
     public static class CSPApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseCSP(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseContentSecurityPolicy(this IApplicationBuilder applicationBuilder)
         {
             applicationBuilder.Use(async (ctx, next) =>
             {
                 HttpResponse httpResponse = ctx.Response;
-                string nonce = "";
+                string nonce = NonceHelper.GenerateNonce();
 
                 httpResponse.AddCSPHeader(nonce);
                 httpResponse.AddNonceToResponseItems(nonce);

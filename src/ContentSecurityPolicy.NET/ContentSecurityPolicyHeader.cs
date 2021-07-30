@@ -4,11 +4,8 @@ namespace ContentSecurityPolicy.NET
 {
     public class ContentSecurityPolicyHeader
     {
-        public DefaultSourceDirective DefaultSrc { get; private set; }
-
-        internal ContentSecurityPolicyHeader(DefaultSourceDirective defaultSrc)
+        internal ContentSecurityPolicyHeader()
         {
-            DefaultSrc = defaultSrc;
         }
     }
 }

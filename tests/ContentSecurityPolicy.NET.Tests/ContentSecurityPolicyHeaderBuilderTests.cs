@@ -21,16 +21,16 @@ namespace ContentSecurityPolicy.NET.Tests
             Assert.IsNotNull(contentSecurityPolicyHeader);
         }
 
-        [TestMethod]
-        public void AddDefaultSrcShouldAddDefaultSrcDirective()
-        {
-            DefaultSourceDirective defaultSourceDirective = new();
+    //    [TestMethod]
+    //    public void AddDefaultSrcShouldAddDefaultSrcDirective()
+    //    {
+    //        DefaultSourceDirective defaultSourceDirective = new();
             
-            builder.AddDefaultSrc(defaultSourceDirective);
-            ContentSecurityPolicyHeader contentSecurityPolicyHeader = builder.Build();
+    //        builder.AddDefaultSrc(defaultSourceDirective);
+    //        ContentSecurityPolicyHeader contentSecurityPolicyHeader = builder.Build();
 
-            Assert.IsNotNull(contentSecurityPolicyHeader.DefaultSrc);
-            Assert.AreSame(defaultSourceDirective, contentSecurityPolicyHeader.DefaultSrc);
-        }
+    //        Assert.IsNotNull(contentSecurityPolicyHeader.DefaultSrc);
+    //        Assert.AreSame(defaultSourceDirective, contentSecurityPolicyHeader.DefaultSrc);
+    //    }
     }
 }

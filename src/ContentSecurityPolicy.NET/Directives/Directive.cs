@@ -12,6 +12,10 @@ namespace ContentSecurityPolicy.NET.Directives
 
         private readonly string _directivePreffix;
 
+        public Directive(string directivePreffix): this(directivePreffix, "self")
+        {
+        }
+
         public Directive(string directivePreffix, StringValues values)
         {
             _directivePreffix = directivePreffix;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ContentSecurityPolicy.NET.Extensions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
 namespace ContentSecurityPolicy.NET.Web.Extensions

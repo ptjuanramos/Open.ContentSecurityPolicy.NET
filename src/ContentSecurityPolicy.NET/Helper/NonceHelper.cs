@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace ContentSecurityPolicy.NET
+namespace ContentSecurityPolicy.NET.Helper
 {
-    public static class NonceHelper
+    internal class NonceHelper : INonceHelper
     {
-        public static string GenerateNonce()
+        public string GenerateNonce()
         {
             byte[] byteArray = new byte[20];
 

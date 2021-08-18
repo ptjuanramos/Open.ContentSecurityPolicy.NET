@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Primitives;
+﻿using ContentSecurityPolicy.NET.Extensions;
+using Microsoft.Extensions.Primitives;
 
 namespace ContentSecurityPolicy.NET.Directives
 {

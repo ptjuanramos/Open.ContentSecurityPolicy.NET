@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace ContentSecurityPolicy.NET
+namespace ContentSecurityPolicy.NET.Extensions
 {
-    public static class PolicyExtensions
+    internal static class PolicyExtensions
     {
         public static string GetPreffix(this Policy policy)
         {

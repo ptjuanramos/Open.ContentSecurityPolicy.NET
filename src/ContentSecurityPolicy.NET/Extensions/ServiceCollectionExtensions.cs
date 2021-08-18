@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ContentSecurityPolicy.NET.Helper;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ContentSecurityPolicy.NET.Extensions
     {
         public static void AddContentSecurity(this IServiceCollection services)
         {
-            
+            services.AddTransient<INonceHelper, NonceHelper>();
         }
     }
 }

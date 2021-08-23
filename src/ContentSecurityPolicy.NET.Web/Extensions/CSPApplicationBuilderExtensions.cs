@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace ContentSecurityPolicy.NET.Extensions
+namespace ContentSecurityPolicy.NET.Web.Extensions
 {
-    public static class CSPApplicationBuilderExtensions
+    public static class CspApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseContentSecurityPolicy(this IApplicationBuilder applicationBuilder)
         {

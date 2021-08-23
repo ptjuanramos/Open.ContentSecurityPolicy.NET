@@ -1,3 +1,5 @@
+using ContentSecurityPolicy.NET.Extensions;
+using ContentSecurityPolicy.NET.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace ContentSecurityPolicy.NET.Web.POC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddContentSecurity();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +49,8 @@ namespace ContentSecurityPolicy.NET.Web.POC
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseContentSecurityPolicy();
 
             app.UseEndpoints(endpoints =>
             {

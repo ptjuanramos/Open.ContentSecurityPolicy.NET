@@ -14,13 +14,12 @@ namespace ContentSecurityPolicy.NET.Extensions
             string name = Enum.GetName(type, policy);
 
             MemberInfo member = type.GetMembers()
-                .Where(w => w.Name == name)
-                .FirstOrDefault();
+                .FirstOrDefault(w => w.Name == name);
 
             DescriptionAttribute attribute = member != null
                 ? member.GetCustomAttributes(true)
-                    .Where(w => w.GetType() == typeof(DescriptionAttribute))
-                    .FirstOrDefault() as DescriptionAttribute
+                    .FirstOrDefault(w => w.GetType() == typeof(DescriptionAttribute))
+                        as DescriptionAttribute
                 : null;
 
             return attribute != null ? attribute.Description : name;

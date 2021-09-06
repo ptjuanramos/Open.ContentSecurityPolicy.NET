@@ -2,16 +2,16 @@
 
 namespace ContentSecurityPolicy.NET.Extensions
 {
-    public static class HttpResponseExtensions
+    internal static class HttpResponseExtensions
     {
         const string HeaderKey = "Content-Security-Policy";
         const string NonceKey = "nonce";
 
-        public static void AddCSPHeader(this HttpResponse httpResponse, string nonce)
+        public static void AddCSPHeader(this HttpResponse httpResponse, string cspHeaderValue)
         {
             if (!httpResponse.Headers.ContainsKey(HeaderKey))
             {
-                httpResponse.Headers.Add(HeaderKey, nonce);
+                httpResponse.Headers.Add(HeaderKey, cspHeaderValue);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using ContentSecurityPolicy.NET.Helper;
+﻿using ContentSecurityPolicy.NET.Configuration;
+using ContentSecurityPolicy.NET.Helper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ContentSecurityPolicy.NET.Extensions
@@ -8,6 +9,7 @@ namespace ContentSecurityPolicy.NET.Extensions
         public static void AddContentSecurity(this IServiceCollection services)
         {
             services.AddTransient<INonceHelper, NonceHelper>();
+            services.AddTransient<IConfigurationDirectivesResolver, ConfigurationDirectivesResolver>();
         }
     }
 }

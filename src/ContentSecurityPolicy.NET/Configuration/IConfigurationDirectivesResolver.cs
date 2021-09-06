@@ -1,4 +1,4 @@
-﻿namespace ContentSecurityPolicy.NET
+﻿namespace ContentSecurityPolicy.NET.Configuration
 {
     public interface IConfigurationDirectivesResolver
     {

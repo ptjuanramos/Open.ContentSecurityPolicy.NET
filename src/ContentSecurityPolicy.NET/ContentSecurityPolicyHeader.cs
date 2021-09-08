@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ContentSecurityPolicy.NET
 {
-    public class ContentSecurityPolicyHeader
+    internal class ContentSecurityPolicyHeader
     {
         private readonly IReadOnlyCollection<Directive> _directives;
 

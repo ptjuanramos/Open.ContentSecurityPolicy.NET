@@ -1,6 +1,6 @@
 ﻿namespace ContentSecurityPolicy.NET
 {
-    public class PolicyPreffix
+    internal class PolicyPreffix
     {
         public const string DefaultSrc = "default-src";
         public const string ScriptSrc = "script-src";

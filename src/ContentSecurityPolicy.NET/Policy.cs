@@ -4,6 +4,8 @@ namespace ContentSecurityPolicy.NET
 {
     public enum Policy
     {
+        None,
+
         [Description(PolicyPreffix.DefaultSrc)]
         DefaultSrc,
 

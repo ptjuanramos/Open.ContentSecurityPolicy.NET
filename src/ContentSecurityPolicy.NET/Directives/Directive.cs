@@ -11,8 +11,7 @@ namespace ContentSecurityPolicy.NET.Directives
         public const string SeparatorWithSpace = "; ";
 
         public IList<string> Values { get; internal set; }
-
-        private readonly string _directivePreffix;
+        public readonly string DirectivePreffix;
 
         internal Directive(string directivePreffix): this(directivePreffix, "self")
         {
@@ -20,13 +19,13 @@ namespace ContentSecurityPolicy.NET.Directives
 
         internal Directive(string directivePreffix, StringValues values)
         {
-            _directivePreffix = directivePreffix;
+            DirectivePreffix = directivePreffix;
             Values = new List<string>(values);
         }
 
         public override string ToString()
         {
-            return $"{_directivePreffix} {string.Join(SeparatorWithSpace, Values)}";
+            return $"{DirectivePreffix} {string.Join(SeparatorWithSpace, Values)}";
         }
     }
 }

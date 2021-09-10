@@ -6,8 +6,8 @@
 ```json
 "ContentSecurityPolicy": {
     ...
-    "DefaultSrc": [],
-    "ScriptSrc": [],
+    "DefaultSrc": [ "{nonce}", "self" ],
+    "ScriptSrc": [ "{nonce}", "self", "cdn.js" ],
     "FrameAncestors": [],
     "PluginTypes": [],
     "ReportTo": [],

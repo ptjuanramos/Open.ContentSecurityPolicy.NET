@@ -5,15 +5,20 @@ using System.Threading.Tasks;
 
 namespace ContentSecurityPolicy.NET
 {
-    public class ContentSecurityPolicyMiddleware
+    internal class ContentSecurityPolicyMiddleware
     {
         private readonly RequestDelegate _nextDelegate;
         private readonly INonceHelper _nonceHelper;
+        private readonly IContentSecurityPolicyHelper _contentSecurityPolicyHelper;
 
-        public ContentSecurityPolicyMiddleware(RequestDelegate nextDelegate, INonceHelper nonceHelper)
+        public ContentSecurityPolicyMiddleware(
+            RequestDelegate nextDelegate, 
+            INonceHelper nonceHelper, 
+            IContentSecurityPolicyHelper contentSecurityPolicyHelper)
         {
             _nextDelegate = nextDelegate;
             _nonceHelper = nonceHelper;
+            _contentSecurityPolicyHelper = contentSecurityPolicyHelper;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -21,7 +26,9 @@ namespace ContentSecurityPolicy.NET
             HttpResponse httpResponse = context.Response;
             string nonce = _nonceHelper.GenerateNonce();
 
-            httpResponse.AddCSPHeader(nonce);
+            ContentSecurityPolicyHeader contentSecurityPolicyHeader = _contentSecurityPolicyHelper.GetContentSecurityPolicy(nonce);
+
+            httpResponse.AddCSPHeader(contentSecurityPolicyHeader);
             httpResponse.AddNonceToResponseItems(nonce);
 
             await _nextDelegate(context);

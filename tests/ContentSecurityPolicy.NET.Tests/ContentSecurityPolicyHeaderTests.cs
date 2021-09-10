@@ -6,10 +6,12 @@ namespace ContentSecurityPolicy.NET.Tests
 {
     class ContentSecurityPolicyHeaderTests
     {
+        private const string NonceValue = "nonce-value";
+
         [TestMethod]
         public void ToStringMustReturnEmptyStringIfDirectivesListAreNull()
         {
-            ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(null);
+            ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(null, NonceValue);
             Assert.AreEqual(string.Empty, contentSecurityPolicyHeader.ToString());
         }
 
@@ -22,8 +24,21 @@ namespace ContentSecurityPolicy.NET.Tests
                 DirectiveFactory.GetDirective(Policy.ScriptSrc)
             };
 
-            ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives);
+            ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives, NonceValue);
             Assert.AreEqual("default-src self; script-src self;", contentSecurityPolicyHeader.ToString());
+        }
+
+        [TestMethod]
+        public void ToStringMustReplaceDirectiveNoncePlaceholder()
+        {
+            List<Directive> directives = new()
+            {
+                DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "{nonce}", "self" }),
+                DirectiveFactory.GetDirective(Policy.ScriptSrc, new string[] { "{nonce}", "self" })
+            };
+
+            ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives, NonceValue);
+            Assert.AreEqual($"default-src {NonceValue} self; script-src {NonceValue} self;", contentSecurityPolicyHeader.ToString());
         }
     }
 }

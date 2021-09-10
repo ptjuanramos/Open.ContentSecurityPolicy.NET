@@ -15,11 +15,19 @@ namespace ContentSecurityPolicy.NET.Directives.Resolver
             _configuration = configuration;
         }
 
+        class ContentSecuritPolicyConfig
+        {
+            public IDictionary<string, IEnumerable<string>> Directives { get; set; }
+        }
+
         public IReadOnlyCollection<Directive> GetDirectives()
         {
             IConfigurationSection cspSection = _configuration?.GetSection(ConfigurationKey);
             if (cspSection == null)
                 return new List<Directive>();
+
+            ContentSecuritPolicyConfig configuration = cspSection
+                .Get<ContentSecuritPolicyConfig>();
 
             IEnumerable<IConfigurationSection> directivesSections = cspSection.GetChildren();
 

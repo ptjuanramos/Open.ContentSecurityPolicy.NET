@@ -24,7 +24,7 @@ namespace ContentSecurityPolicy.NET.Tests.Extensions
         [TestMethod]
         public void AddCSPHeaderMustAddHeaderValueToHttpResponse()
         {
-            HttpResponseExtensions.AddCSPHeader(mockedHttpResponse.Object, "default-src 'self'");
+            HttpResponseExtensions.AddCSPHeader(mockedHttpResponse.Object, new(null, "nonce-value"));
 
             Assert.IsTrue(headerDictionary.ContainsKey("Content-Security-Policy"));
         }

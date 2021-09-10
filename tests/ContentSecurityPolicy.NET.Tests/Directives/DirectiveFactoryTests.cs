@@ -35,7 +35,7 @@ namespace ContentSecurityPolicy.NET.Tests.Directives
             Directive directive = DirectiveFactory.GetDirective(policy, values);
             Directive selfDirective = DirectiveFactory.GetDirective(policy);
 
-            Assert.AreEqual($"{preffix} {string.Join(Directive.SeparatorWithSpace, values)}", directive.ToString());
+            Assert.AreEqual($"{preffix} {string.Join(Constants.SeparatorWithSpace, values)}", directive.ToString());
             Assert.AreEqual($"{preffix} self", selfDirective.ToString());
         }
     }

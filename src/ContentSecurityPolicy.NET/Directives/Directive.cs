@@ -8,8 +8,6 @@ namespace ContentSecurityPolicy.NET.Directives
     /// </summary>
     public class Directive
     {
-        public const string SeparatorWithSpace = "; ";
-
         public IList<string> Values { get; internal set; }
         public readonly string DirectivePreffix;
 
@@ -25,7 +23,7 @@ namespace ContentSecurityPolicy.NET.Directives
 
         public override string ToString()
         {
-            return $"{DirectivePreffix} {string.Join(SeparatorWithSpace, Values)}";
+            return $"{DirectivePreffix} {string.Join(Constants.SeparatorWithSpace, Values)}";
         }
     }
 }

@@ -1,5 +1,4 @@
 using ContentSecurityPolicy.NET.Extensions;
-using ContentSecurityPolicy.NET.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

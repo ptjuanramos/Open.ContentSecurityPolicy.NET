@@ -2,19 +2,27 @@
 using ContentSecurityPolicy.NET.Directives.Resolver;
 using ContentSecurityPolicy.NET.Helper;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;
 
 namespace ContentSecurityPolicy.NET.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+
+        private static void AddHelpers(this IServiceCollection services)
+        {
+            services.TryAddTransient<INonceHelper, DefaultNonceHelper>();
+            services.AddTransient<IContentSecurityPolicyHelper, ContentSecurityPolicyHelper>();
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="services"></param>
         public static void AddContentSecurity(this IServiceCollection services)
         {
-            services.AddTransient<INonceHelper, NonceHelper>();
+            services.AddHelpers();
             services.AddTransient<IDirectivesResolver, ConfigurationDirectivesResolver>();
         }
 
@@ -25,7 +33,7 @@ namespace ContentSecurityPolicy.NET.Extensions
         /// <param name="directives"></param>
         public static void AddContentSecurity(this IServiceCollection services, IReadOnlyCollection<Directive> directives)
         {
-            services.AddTransient<INonceHelper, NonceHelper>();
+            services.AddHelpers();
             services.AddSingleton<IDirectivesResolver>((_) => new ExplicitDirectivesResolver(directives));
         }
     }

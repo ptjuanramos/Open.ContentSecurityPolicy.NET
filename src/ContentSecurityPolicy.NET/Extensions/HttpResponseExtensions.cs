@@ -4,22 +4,19 @@ namespace ContentSecurityPolicy.NET.Extensions
 {
     internal static class HttpResponseExtensions
     {
-        const string HeaderKey = "Content-Security-Policy";
-        const string NonceKey = "nonce";
-
-        public static void AddCSPHeader(this HttpResponse httpResponse, string cspHeaderValue)
+        public static void AddCSPHeader(this HttpResponse httpResponse, ContentSecurityPolicyHeader contentSecurityPolicyHeader)
         {
-            if (!httpResponse.Headers.ContainsKey(HeaderKey))
+            if (!httpResponse.Headers.ContainsKey(Constants.HeaderKey))
             {
-                httpResponse.Headers.Add(HeaderKey, cspHeaderValue);
+                httpResponse.Headers.Add(Constants.HeaderKey, contentSecurityPolicyHeader.ToString());
             }
         }
 
         public static void AddNonceToResponseItems(this HttpResponse httpResponse, string nonce)
         {
-            if(!httpResponse.HttpContext.Items.ContainsKey(NonceKey))
+            if(!httpResponse.HttpContext.Items.ContainsKey(Constants.NonceKey))
             {
-                httpResponse.HttpContext.Items.Add(NonceKey, nonce);
+                httpResponse.HttpContext.Items.Add(Constants.NonceKey, nonce);
             }
         }
     }

@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace ContentSecurityPolicy.NET.Helper
 {
-    internal class NonceHelper : INonceHelper
+    internal class DefaultNonceHelper : INonceHelper
     {
         public string GenerateNonce()
         {

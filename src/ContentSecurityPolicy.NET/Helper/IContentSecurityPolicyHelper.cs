@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ContentSecurityPolicy.NET.Helper
+﻿namespace ContentSecurityPolicy.NET.Helper
 {
-    class IContentSecurityPolicyHelper
+    internal interface IContentSecurityPolicyHelper
     {
+        ContentSecurityPolicyHeader GetContentSecurityPolicy(string nonce);
     }
 }

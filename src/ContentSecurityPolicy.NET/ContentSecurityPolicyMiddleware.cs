@@ -8,23 +8,20 @@ namespace ContentSecurityPolicy.NET
     internal class ContentSecurityPolicyMiddleware
     {
         private readonly RequestDelegate _nextDelegate;
-        private readonly INonceHelper _nonceHelper;
         private readonly IContentSecurityPolicyHelper _contentSecurityPolicyHelper;
 
         public ContentSecurityPolicyMiddleware(
             RequestDelegate nextDelegate, 
-            INonceHelper nonceHelper, 
             IContentSecurityPolicyHelper contentSecurityPolicyHelper)
         {
             _nextDelegate = nextDelegate;
-            _nonceHelper = nonceHelper;
             _contentSecurityPolicyHelper = contentSecurityPolicyHelper;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, INonceHelper nonceHelper)
         {
             HttpResponse httpResponse = context.Response;
-            string nonce = _nonceHelper.GenerateNonce();
+            string nonce = nonceHelper.GetNonce();
 
             ContentSecurityPolicyHeader contentSecurityPolicyHeader = _contentSecurityPolicyHelper.GetContentSecurityPolicy(nonce);
 

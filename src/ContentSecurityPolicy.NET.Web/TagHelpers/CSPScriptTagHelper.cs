@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentSecurityPolicy.NET.Web
+namespace ContentSecurityPolicy.NET.Web.TagHelpers
 {
     public class CSPScriptTagHelper
     {

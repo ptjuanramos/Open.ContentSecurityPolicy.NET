@@ -12,7 +12,7 @@ namespace ContentSecurityPolicy.NET.Extensions
 
         private static void AddHelpers(this IServiceCollection services)
         {
-            services.TryAddTransient<INonceHelper, DefaultNonceHelper>();
+            services.TryAddScoped<INonceHelper, DefaultNonceHelper>();
             services.AddTransient<IContentSecurityPolicyHelper, ContentSecurityPolicyHelper>();
         }
 

@@ -1,9 +1,8 @@
 ﻿using ContentSecurityPolicy.NET.Directives;
 using ContentSecurityPolicy.NET.Directives.Resolver;
-using ContentSecurityPolicy.NET.Helper;
 using System.Collections.Generic;
 
-namespace ContentSecurityPolicy.NET
+namespace ContentSecurityPolicy.NET.Helpers
 {
     internal class ContentSecurityPolicyHelper : IContentSecurityPolicyHelper
     {

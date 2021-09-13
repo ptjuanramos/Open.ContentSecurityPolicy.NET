@@ -1,6 +1,5 @@
-﻿using ContentSecurityPolicy.NET.Helper;
+﻿using ContentSecurityPolicy.NET.Providers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.Threading.Tasks;
 
 namespace ContentSecurityPolicy.NET.Web.TagHelpers
@@ -10,18 +9,18 @@ namespace ContentSecurityPolicy.NET.Web.TagHelpers
     /// </summary>
     [HtmlTargetElement("script", Attributes = "asp-with-nonce")]
     [HtmlTargetElement("style", Attributes = "asp-with-nonce")]
-    public class CSPTagHelper : TagHelper
+    public class NonceTagHelper : TagHelper
     {
-        private readonly INonceHelper _nonceHelper;
+        private readonly INonceProvider _nonceProvider;
 
-        public CSPTagHelper(INonceHelper nonceHelper)
+        public NonceTagHelper(INonceProvider nonceProvider)
         {
-            _nonceHelper = nonceHelper;
+            _nonceProvider = nonceProvider;
         }
 
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            string nonce = _nonceHelper.GetNonce(); //TODO
+            string nonce = _nonceProvider.Nonce;
 
             if (!string.IsNullOrEmpty(nonce))
             {

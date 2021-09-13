@@ -30,18 +30,19 @@ namespace ContentSecurityPolicy.NET.Extensions
 ```
 
 ```CSHARP
-namespace ContentSecurityPolicy.NET.Helper 
+namespace ContentSecurityPolicy.NET.Providers 
 {
-    public interface INonceHelper {
-        public string GetNonce();
+    public interface INonceProvider 
+    {
+        public string Nonce { get; };
     }
 }
 ```
 
 ```CSHARP
-namespace ContentSecurityPolicy.NET.Helper 
+namespace ContentSecurityPolicy.NET.Providers 
 {
-    public abstract class NonceHelper : INonceHelper
+    public abstract class NonceProvider : INonceProvider
     {
         protected abstract string GenerateNonce();
     }

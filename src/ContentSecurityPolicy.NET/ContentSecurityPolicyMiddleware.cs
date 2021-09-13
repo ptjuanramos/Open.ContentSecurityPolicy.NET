@@ -1,5 +1,6 @@
 ﻿using ContentSecurityPolicy.NET.Extensions;
-using ContentSecurityPolicy.NET.Helper;
+using ContentSecurityPolicy.NET.Helpers;
+using ContentSecurityPolicy.NET.Providers;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
@@ -18,10 +19,10 @@ namespace ContentSecurityPolicy.NET
             _contentSecurityPolicyHelper = contentSecurityPolicyHelper;
         }
 
-        public async Task InvokeAsync(HttpContext context, INonceHelper nonceHelper)
+        public async Task InvokeAsync(HttpContext context, INonceProvider nonceProvider)
         {
             HttpResponse httpResponse = context.Response;
-            string nonce = nonceHelper.GetNonce();
+            string nonce = nonceProvider.Nonce;
 
             ContentSecurityPolicyHeader contentSecurityPolicyHeader = _contentSecurityPolicyHelper.GetContentSecurityPolicy(nonce);
 

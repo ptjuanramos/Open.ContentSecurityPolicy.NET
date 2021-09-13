@@ -1,6 +1,7 @@
 ﻿using ContentSecurityPolicy.NET.Directives;
 using ContentSecurityPolicy.NET.Directives.Resolver;
-using ContentSecurityPolicy.NET.Helper;
+using ContentSecurityPolicy.NET.Helpers;
+using ContentSecurityPolicy.NET.Providers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ContentSecurityPolicy.NET.Extensions
 
         private static void AddHelpers(this IServiceCollection services)
         {
-            services.TryAddScoped<INonceHelper, DefaultNonceHelper>();
+            services.TryAddScoped<INonceProvider, DefaultNonceProvider>();
             services.AddTransient<IContentSecurityPolicyHelper, ContentSecurityPolicyHelper>();
         }
 

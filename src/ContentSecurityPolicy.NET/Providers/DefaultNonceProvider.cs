@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace ContentSecurityPolicy.NET.Helper
+namespace ContentSecurityPolicy.NET.Providers
 {
     /// <summary>
     /// 
     /// </summary>
-    internal class DefaultNonceHelper : NonceHelper
+    internal class DefaultNonceProvider : NonceProvider
     {
         protected override string GenerateNonce()
         {

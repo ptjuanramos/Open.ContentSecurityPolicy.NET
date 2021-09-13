@@ -1,4 +1,4 @@
-﻿namespace ContentSecurityPolicy.NET.Helper
+﻿namespace ContentSecurityPolicy.NET.Helpers
 {
     internal interface IContentSecurityPolicyHelper
     {

@@ -1,14 +1,15 @@
-﻿namespace ContentSecurityPolicy.NET.Helper
+﻿namespace ContentSecurityPolicy.NET.Providers
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface INonceHelper
+    public interface INonceProvider
     {
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public string GetNonce();
+        public string Nonce { get; }
     }
 }

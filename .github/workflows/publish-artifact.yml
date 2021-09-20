@@ -17,7 +17,7 @@ jobs:
         uses: rohith/publish-nuget@v2
         with:
           PROJECT_FILE_PATH: src/ContentSecurityPolicy.NET/ContentSecurityPolicy.NET.csproj
-          PACKAGE_NAME: ContentSecurityPolicy.NET
+          PACKAGE_NAME: Neo.ContentSecurityPolicy.NET
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_CORE_API_KEY}}
@@ -34,7 +34,7 @@ jobs:
         uses: rohith/publish-nuget@v2
         with:
           PROJECT_FILE_PATH: src/ContentSecurityPolicy.NET.Web/ContentSecurityPolicy.NET.Web.csproj
-          PACKAGE_NAME: ContentSecurityPolicy.NET.Web
+          PACKAGE_NAME: Neo.ContentSecurityPolicy.NET.Web
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_WEB_API_KEY}}

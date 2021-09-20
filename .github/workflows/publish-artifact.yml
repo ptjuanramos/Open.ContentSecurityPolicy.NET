@@ -8,8 +8,6 @@ on:
 
 jobs:
   publish_core_lib_nuget_source:
-    env:
-      PROJ_NAME: ContentSecurityPolicy.NET
     name: build, pack & publish core lib to nuget source
     runs-on: ubuntu-latest
     steps:
@@ -18,8 +16,8 @@ jobs:
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: src/${{PROJ_NAME}}/${{PROJ_NAME}}.csproj
-          PACKAGE_NAME: ${{PROJ_NAME}}
+          PROJECT_FILE_PATH: src/ContentSecurityPolicy.NET/ContentSecurityPolicy.NET.csproj
+          PACKAGE_NAME: ContentSecurityPolicy.NET
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
@@ -35,8 +33,8 @@ jobs:
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: src/${{PROJ_NAME}}/${{PROJ_NAME}}.csproj
-          PACKAGE_NAME: ${{PROJ_NAME}}
+          PROJECT_FILE_PATH: src/ContentSecurityPolicy.NET.Web/ContentSecurityPolicy.NET.Web.csproj
+          PACKAGE_NAME: ContentSecurityPolicy.NET.Web
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}

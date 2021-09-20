@@ -18,8 +18,8 @@ jobs:
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: src/${PROJ_NAME}/${PROJ_NAME}.csproj
-          PACKAGE_NAME: ${PROJ_NAME}
+          PROJECT_FILE_PATH: src/${{PROJ_NAME}}/${{PROJ_NAME}}.csproj
+          PACKAGE_NAME: ${{PROJ_NAME}}
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
@@ -35,8 +35,8 @@ jobs:
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: src/${PROJ_NAME}/${PROJ_NAME}.csproj
-          PACKAGE_NAME: ${PROJ_NAME}
+          PROJECT_FILE_PATH: src/${{PROJ_NAME}}/${{PROJ_NAME}}.csproj
+          PACKAGE_NAME: ${{PROJ_NAME}}
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}

@@ -1,0 +1,42 @@
+name: publish artifacts
+
+on:
+  push:
+    branches: [ release ]
+  pull_request:
+    branches: [ release ]
+
+jobs:
+  publish_core_lib_nuget_source:
+    env:
+      PROJ_NAME: ContentSecurityPolicy.NET
+    name: build, pack & publish core lib to nuget source
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: publish on version change
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/${PROJ_NAME}/${PROJ_NAME}.csproj
+          PACKAGE_NAME: ${PROJ_NAME}
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          TAG_COMMIT: true
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          
+  publish_web_lib_nuget_source:
+    env:
+        PROJ_NAME: ContentSecurityPolicy.NET.Web
+    name: build, pack & publish web lib to nuget source
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: publish on version change
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/${PROJ_NAME}/${PROJ_NAME}.csproj
+          PACKAGE_NAME: ${PROJ_NAME}
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          TAG_COMMIT: true
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}

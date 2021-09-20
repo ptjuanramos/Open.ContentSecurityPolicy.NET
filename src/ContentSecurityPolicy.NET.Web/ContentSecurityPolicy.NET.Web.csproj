@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Juan Ramos</Authors>
+    <RepositoryUrl>https://github.com/ptjuanramos/ContentSecurityPolicy.NET</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <Description>Library that contains helpfull implementation for your web app application to reduce XSS risks.</Description>
+    <Version>0.9.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

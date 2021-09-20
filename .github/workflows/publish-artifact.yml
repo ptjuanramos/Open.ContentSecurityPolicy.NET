@@ -20,7 +20,7 @@ jobs:
           PACKAGE_NAME: ContentSecurityPolicy.NET
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          NUGET_KEY: ${{secrets.NUGET_CORE_API_KEY}}
           
   publish_web_lib_nuget_source:
     env:
@@ -37,4 +37,4 @@ jobs:
           PACKAGE_NAME: ContentSecurityPolicy.NET.Web
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          NUGET_KEY: ${{secrets.NUGET_WEB_API_KEY}}

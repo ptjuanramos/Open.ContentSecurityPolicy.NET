@@ -26,7 +26,7 @@ namespace ContentSecurityPolicy.NET
             string csp = BuildCsp();
 
             if (!string.IsNullOrEmpty(_nonce))
-                csp = csp.Replace(Constants.NoncePlaceholder, _nonce);
+                csp = csp.Replace(Constants.NoncePlaceholder, $"nonce-{_nonce}");
 
             return csp;
         }

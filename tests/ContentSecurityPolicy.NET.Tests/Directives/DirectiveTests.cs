@@ -65,7 +65,7 @@ namespace ContentSecurityPolicy.NET.Tests.Directives
             StringValues values = new string[] { "value-1", "value-2", "value-3" };
             Directive directive = new("script-src", values);
 
-            Assert.AreEqual($"script-src {values[0]}; {values[1]}; {values[2]}", directive.ToString());
+            Assert.AreEqual($"script-src {values[0]} {values[1]} {values[2]}", directive.ToString());
         }
     }
 }

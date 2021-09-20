@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ContentSecurityPolicy.NET.Web.TagHelpers
 {
-    public class CSPScriptTagHelper
+    /// <summary>
+    /// TODO
+    /// </summary>
+    internal class CSPScriptTagHelper
     {
+        public CSPScriptTagHelper()
+        {
+            
+        }
     }
 }

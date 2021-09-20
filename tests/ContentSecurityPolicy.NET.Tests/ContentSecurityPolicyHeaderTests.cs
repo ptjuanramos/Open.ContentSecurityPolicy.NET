@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace ContentSecurityPolicy.NET.Tests
 {
-    class ContentSecurityPolicyHeaderTests
+    [TestClass]
+    public class ContentSecurityPolicyHeaderTests
     {
         private const string NonceValue = "nonce-value";
 
@@ -20,12 +21,12 @@ namespace ContentSecurityPolicy.NET.Tests
         {
             List<Directive> directives = new()
             {
-                DirectiveFactory.GetDirective(Policy.DefaultSrc),
+                DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "self", "cdn" }),
                 DirectiveFactory.GetDirective(Policy.ScriptSrc)
             };
 
             ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives, NonceValue);
-            Assert.AreEqual("default-src self; script-src self;", contentSecurityPolicyHeader.ToString());
+            Assert.AreEqual("default-src self cdn; script-src self", contentSecurityPolicyHeader.ToString());
         }
 
         [TestMethod]
@@ -38,7 +39,7 @@ namespace ContentSecurityPolicy.NET.Tests
             };
 
             ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives, NonceValue);
-            Assert.AreEqual($"default-src {NonceValue} self; script-src {NonceValue} self;", contentSecurityPolicyHeader.ToString());
+            Assert.AreEqual($"default-src nonce-{NonceValue} self; script-src nonce-{NonceValue} self", contentSecurityPolicyHeader.ToString());
         }
     }
 }

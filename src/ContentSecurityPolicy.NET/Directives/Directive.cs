@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Primitives;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ContentSecurityPolicy.NET.Directives
 {
@@ -23,7 +24,8 @@ namespace ContentSecurityPolicy.NET.Directives
 
         public override string ToString()
         {
-            return $"{DirectivePreffix} {string.Join(Constants.SeparatorWithSpace, Values)}";
+            StringBuilder stringBuilder = new(DirectivePreffix);
+            return $"{DirectivePreffix} {string.Join(Constants.Space, Values)}";
         }
     }
 }

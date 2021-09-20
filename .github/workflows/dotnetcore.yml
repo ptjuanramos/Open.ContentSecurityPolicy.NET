@@ -1,4 +1,4 @@
-name: Content-Security-Policy Build & Test
+name: build & test
 
 on:
   push:

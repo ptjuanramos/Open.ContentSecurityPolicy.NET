@@ -6,8 +6,8 @@
 ```json
 "ContentSecurityPolicy": {
     ...
-    "DefaultSrc": [ "{nonce}", "self" ],
-    "ScriptSrc": [ "{nonce}", "self", "cdn.js" ],
+    "DefaultSrc": [ "{'nonce}'", "'self'" ],
+    "ScriptSrc": [ "'{nonce}'", "'self'", "cdn.js" ],
     "FrameAncestors": [],
     "PluginTypes": [],
     "ReportTo": [],
@@ -57,4 +57,11 @@ namespace ContentSecurityPolicy.NET.Web.Extensions
         public static IApplicationBuilder UseContentSecurityPolicy(this IApplicationBuilder applicationBuilder);
     }
 }
+```
+
+
+```HTML
+
+<script asp-with-nonce src="~/lib/jquery/dist/jquery.min.js"></script>
+
 ```

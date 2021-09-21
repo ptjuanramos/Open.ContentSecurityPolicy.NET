@@ -6,67 +6,31 @@ on:
 
 jobs:
   publish_core_lib_nuget_source:
-      name: Publish core lib to nuget source
-      runs-on: ubuntu-latest
-      steps:
+    name: build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
-      
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: publish on version change
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
         with:
-          dotnet-version: 5.0.x
-
-      - name: Clean project
-        run: dotnet clean
-
-      - name: Install dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
-      - uses: kzrnm/get-net-sdk-project-versions-action@v1
-        id: get-version
-        with:
-          proj-path: src/Ramos.ContentSecurityPolicy.NET/Ramos.ContentSecurityPolicy.NET.csproj
-
-      - name: Publish
-        run: >
-          export VERSION=${{steps.get-version.outputs.version}};
-          echo $VERSION;
-          dotnet pack --configuration Release --include-source -p:SymbolPackageFormat=snupkg -p:ContinuousIntegrationBuild=true -p:Version=$VERSION -o out src/Ramos.ContentSecurityPolicy.NET;
-          cd out;
-          dotnet nuget push Ramos.ContentSecurityPolicy.NET.$VERSION.nupkg --no-symbols --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate;
+          PROJECT_FILE_PATH: src/Ramos.ContentSecurityPolicy.NET/Ramos.ContentSecurityPolicy.NET.csproj
+          PACKAGE_NAME: Ramos.ContentSecurityPolicy.NET
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          TAG_COMMIT: true
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
   publish_web_lib_nuget_source:
-      name: Publish web lib to nuget source
-      runs-on: ubuntu-latest
-      steps:
+    name: build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: publish on version change
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
         with:
-          dotnet-version: 5.0.x
-
-      - name: Clean project
-        run: dotnet clean
-
-      - name: Install dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
-      - uses: kzrnm/get-net-sdk-project-versions-action@v1
-        id: get-version
-        with:
-          proj-path: src/Ramos.ContentSecurityPolicy.NET.Web/Ramos.ContentSecurityPolicy.NET.Web.csproj
-
-      - name: Publish
-        run: >
-          export VERSION=${{steps.get-version.outputs.version}};
-          echo $VERSION;
-          dotnet pack --configuration Release --include-source -p:SymbolPackageFormat=snupkg -p:ContinuousIntegrationBuild=true -p:Version=$VERSION -o out src/Ramos.ContentSecurityPolicy.NET.Web;
-          cd out;
-          dotnet nuget push Ramos.ContentSecurityPolicy.NET.Web.$VERSION.nupkg --no-symbols --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate;
+          PROJECT_FILE_PATH: src/Ramos.ContentSecurityPolicy.NET.Web/Ramos.ContentSecurityPolicy.NET.Web.csproj
+          PACKAGE_NAME: Ramos.ContentSecurityPolicy.NET.Web
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          TAG_COMMIT: true
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}

@@ -6,7 +6,7 @@
     <RepositoryUrl>https://github.com/ptjuanramos/Neo.ContentSecurityPolicy.NET</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <Description>Library that contains helpfull implementation to reduce XSS risks.</Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.0</Version>
     <PackageId>Neo.ContentSecurityPolicy.NET</PackageId>
     <Product>Neo.ContentSecurityPolicy.NET</Product>
     <AssemblyName>Neo.ContentSecurityPolicy.NET</AssemblyName>

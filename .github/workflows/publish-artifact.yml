@@ -36,7 +36,7 @@ jobs:
           echo $VERSION;
           dotnet pack --configuration Release --include-source -p:SymbolPackageFormat=snupkg -p:ContinuousIntegrationBuild=true -p:Version=$VERSION -o out src/Ramos.ContentSecurityPolicy.NET;
           cd out;
-          dotnet nuget push Ramos.ContentSecurityPolicy.NET.$VERSION.nupkg --no-symbols true --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate;
+          dotnet nuget push Ramos.ContentSecurityPolicy.NET.$VERSION.nupkg --no-symbols --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate;
 
   publish_web_lib_nuget_source:
       name: Publish web lib to nuget source
@@ -69,4 +69,4 @@ jobs:
           echo $VERSION;
           dotnet pack --configuration Release --include-source -p:SymbolPackageFormat=snupkg -p:ContinuousIntegrationBuild=true -p:Version=$VERSION -o out src/Ramos.ContentSecurityPolicy.NET.Web;
           cd out;
-          dotnet nuget push Ramos.ContentSecurityPolicy.NET.Web.$VERSION.nupkg --no-symbols true --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate;
+          dotnet nuget push Ramos.ContentSecurityPolicy.NET.Web.$VERSION.nupkg --no-symbols --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate;

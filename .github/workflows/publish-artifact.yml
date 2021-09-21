@@ -10,20 +10,24 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v2
+      
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.x
+
       - name: Install dependencies
         run: dotnet restore
+
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      - name: Publish
-        uses: kzrnm/get-net-sdk-project-versions-action@v1
+      - uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get-version
         with:
           proj-path: src/Neo.ContentSecurityPolicy.NET/Neo.ContentSecurityPolicy.NET.csproj
+
+      - name: Publish
         run: >
           export VERSION=${{steps.get-version.outputs.version}};
           echo $VERSION;
@@ -36,20 +40,24 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v2
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.x
+
       - name: Install dependencies
         run: dotnet restore
+
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      - name: Publish
-        uses: kzrnm/get-net-sdk-project-versions-action@v1
+      - uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get-version
         with:
           proj-path: src/Neo.ContentSecurityPolicy.NET.Web/Neo.ContentSecurityPolicy.NET.Web.csproj
+
+      - name: Publish
         run: >
           export VERSION=${{steps.get-version.outputs.version}};
           echo $VERSION;

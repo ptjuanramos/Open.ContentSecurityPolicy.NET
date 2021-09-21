@@ -3,36 +3,48 @@ name: build & publish artifacts
 on:
   push:
     branches: [ release ]
-  pull_request:
-    branches: [ release ]
 
 jobs:
   publish_core_lib_nuget_source:
-    name: build, pack & publish core lib to nuget source
-    runs-on: ubuntu-latest
-    steps:
+      name: Publish core lib to nuget source
+      runs-on: ubuntu-latest
+      steps:
       - uses: actions/checkout@v2
-      - name: publish on version change
-        id: publish_nuget
-        uses: rohith/publish-nuget@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
         with:
-          PROJECT_FILE_PATH: src/Neo.ContentSecurityPolicy.NET/Neo.ContentSecurityPolicy.NET.csproj
-          PACKAGE_NAME: Neo.ContentSecurityPolicy.NET
-          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          TAG_COMMIT: true
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          
+          dotnet-version: 5.0.x
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: >
+          export VERSION=$(git describe --long --tags --match 'v*' | sed 's/v//' | sed -E 's/[-].+//g');
+          echo $VERSION;
+          dotnet pack --configuration Release --include-source -p:SymbolPackageFormat=snupkg -p:ContinuousIntegrationBuild=true -p:Version=$VERSION -o out src/Neo.ContentSecurityPolicy.NET;
+          cd out;
+          dotnet nuget push Neo.ContentSecurityPolicy.NET.$VERSION.nupkg --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json;
+
   publish_web_lib_nuget_source:
-    name: build, pack & publish web lib to nuget source
-    runs-on: ubuntu-latest
-    steps:
+      name: Publish web lib to nuget source
+      runs-on: ubuntu-latest
+      steps:
       - uses: actions/checkout@v2
-      - name: publish on version change
-        id: publish_nuget
-        uses: rohith/publish-nuget@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
         with:
-          PROJECT_FILE_PATH: src/Neo.ContentSecurityPolicy.NET.Web/Neo.ContentSecurityPolicy.NET.Web.csproj
-          PACKAGE_NAME: Neo.ContentSecurityPolicy.NET.Web
-          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          TAG_COMMIT: true
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          dotnet-version: 5.0.x
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: >
+          export VERSION=$(git describe --long --tags --match 'v*' | sed 's/v//' | sed -E 's/[-].+//g');
+          echo $VERSION;
+          dotnet pack --configuration Release --include-source -p:SymbolPackageFormat=snupkg -p:ContinuousIntegrationBuild=true -p:Version=$VERSION -o out src/Neo.ContentSecurityPolicy.NET.Web;
+          cd out;
+          dotnet nuget push Neo.ContentSecurityPolicy.NET.Web.$VERSION.nupkg --force-english-output -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json;

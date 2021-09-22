@@ -1,4 +1,11 @@
-# ContentSecurityPolicy.NET
+# Ramos.ContentSecurityPolicy.NET
+
+## Context
+### 1. [What is Content Security Policy (CSP)](https://en.wikipedia.org/wiki/Content_Security_Policy)
+
+> Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context
+
+> If the Content-Security-Policy header is present in the server response, a compliant client enforces the declarative whitelist policy. One example goal of a policy is a stricter execution mode for JavaScript in order to prevent certain cross-site scripting attacks.
 
 ### TODO documentation
 

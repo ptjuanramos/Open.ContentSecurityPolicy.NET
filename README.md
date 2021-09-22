@@ -4,7 +4,7 @@
 
 ### <span>Ramos.ContentSecurityPolicy.NET</span>
 
-[![nuget](https://img.shields.io/nuget/v/Ramos.ContentSecurityPolicy.NET.svg)](https://www.nuget.org/packages/Ramos.ContentSecurityPolicy.NET.Job/)
+[![nuget](https://img.shields.io/nuget/v/Ramos.ContentSecurityPolicy.NET.svg)](https://www.nuget.org/packages/Ramos.ContentSecurityPolicy.NET/)
 
 ### <span>Ramos.ContentSecurityPolicy.NET.Web</span>
 
@@ -25,7 +25,7 @@ This library will automatically set the CSP header with the configured directive
 
 ### 3. Setup
 
-Add this JSON element in your appSettings files.
+Add the `ContentSecurityPolicy` element to your appSettings files.
 
 ```json
 "ContentSecurityPolicy": {

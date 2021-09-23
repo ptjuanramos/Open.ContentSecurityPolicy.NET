@@ -76,7 +76,7 @@ namespace Ramos.ContentSecurityPolicy.NET.Tests.Directives.Resolver
             Directive scriptSrc = result.FirstOrDefault(d => d.DirectivePreffix == "script-src");
             Assert.IsNotNull(scriptSrc);
             Assert.AreEqual(1, scriptSrc.Values.Count);
-            Assert.AreEqual("self", scriptSrc.Values[0]);
+            Assert.AreEqual("'self'", scriptSrc.Values[0]);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Ramos.ContentSecurityPolicy.NET.Tests.Directives
             Directive directive = new("script-src");
 
             Assert.AreEqual(1, directive.Values.Count);
-            Assert.AreEqual("self", directive.Values[0]);
+            Assert.AreEqual("'self'", directive.Values[0]);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace Ramos.ContentSecurityPolicy.NET.Tests.Directives
         {
             Directive directive = new("script-src");
 
-            Assert.AreEqual($"script-src self", directive.ToString());
+            Assert.AreEqual($"script-src 'self'", directive.ToString());
         }
 
         [TestMethod]

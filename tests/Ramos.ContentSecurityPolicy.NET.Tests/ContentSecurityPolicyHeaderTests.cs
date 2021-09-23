@@ -21,12 +21,12 @@ namespace Ramos.ContentSecurityPolicy.NET.Tests
         {
             List<Directive> directives = new()
             {
-                DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "self", "cdn" }),
+                DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "'self'", "cdn" }),
                 DirectiveFactory.GetDirective(Policy.ScriptSrc)
             };
 
             ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives, NonceValue);
-            Assert.AreEqual("default-src self cdn; script-src self", contentSecurityPolicyHeader.ToString());
+            Assert.AreEqual("default-src 'self' cdn; script-src 'self'", contentSecurityPolicyHeader.ToString());
         }
 
         [TestMethod]
@@ -34,12 +34,12 @@ namespace Ramos.ContentSecurityPolicy.NET.Tests
         {
             List<Directive> directives = new()
             {
-                DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "{nonce}", "self" }),
-                DirectiveFactory.GetDirective(Policy.ScriptSrc, new string[] { "{nonce}", "self" })
+                DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "'{nonce}'", "'self'" }),
+                DirectiveFactory.GetDirective(Policy.ScriptSrc, new string[] { "'{nonce}'", "'self'" })
             };
 
             ContentSecurityPolicyHeader contentSecurityPolicyHeader = new(directives, NonceValue);
-            Assert.AreEqual($"default-src nonce-{NonceValue} self; script-src nonce-{NonceValue} self", contentSecurityPolicyHeader.ToString());
+            Assert.AreEqual($"default-src 'nonce-{NonceValue}' 'self'; script-src 'nonce-{NonceValue}' 'self'", contentSecurityPolicyHeader.ToString());
         }
     }
 }

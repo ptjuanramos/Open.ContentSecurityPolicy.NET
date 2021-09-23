@@ -37,7 +37,7 @@ namespace Ramos.ContentSecurityPolicy.NET.Tests.Directives
             Directive selfDirective = DirectiveFactory.GetDirective(policy);
 
             Assert.AreEqual($"{preffix} {string.Join(Constants.Space, values)}", directive.ToString());
-            Assert.AreEqual($"{preffix} self", selfDirective.ToString());
+            Assert.AreEqual($"{preffix} 'self'", selfDirective.ToString());
         }
     }
 }

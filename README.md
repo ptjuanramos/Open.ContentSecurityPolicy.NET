@@ -96,17 +96,9 @@ The tag helper `asp-src-include` doesn't work very well with custom tag helpers.
 
 Explanation by example:
 
-Imagine that you receive the following requirements:
- - Web client must receive a CSP response header with, `script-src` and `default-src` directives. 
- - Script-src directive must allow scripts tags that contains a nonce value to run.
- - Script-src must allow jquery cdn to run.
+[Example. 1](examples/Example.NET.Web)
 
- appSettings.json
-```json
-"ContentSecurityPolicy": {
-    "ScriptSrc": [ "'{nonce}'", "'self'", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ],
-  }
-```
-
-TODO
-(...)
+  - Imagine that you receive the following requirements:
+    - Web client must receive a CSP response header with, `script-src` and `default-src` directives. 
+    - Script-src directive must allow scripts tags that contains a nonce value to run.
+    - Script-src must allow jquery cdn to run.

@@ -12,7 +12,7 @@ namespace Ramos.ContentSecurityPolicy.NET.Directives
         public IList<string> Values { get; internal set; }
         public readonly string DirectivePreffix;
 
-        internal Directive(string directivePreffix): this(directivePreffix, "self")
+        internal Directive(string directivePreffix): this(directivePreffix, "'self'")
         {
         }
 
@@ -24,7 +24,6 @@ namespace Ramos.ContentSecurityPolicy.NET.Directives
 
         public override string ToString()
         {
-            StringBuilder stringBuilder = new(DirectivePreffix);
             return $"{DirectivePreffix} {string.Join(Constants.Space, Values)}";
         }
     }

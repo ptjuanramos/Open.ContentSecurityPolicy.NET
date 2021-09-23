@@ -6,7 +6,7 @@
     <RepositoryUrl>https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <Description>Library that contains helpful implementation to reduce XSS risks.</Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <PackageId>Ramos.ContentSecurityPolicy.NET</PackageId>
     <Product>Ramos.ContentSecurityPolicy.NET</Product>
     <AssemblyName>Ramos.ContentSecurityPolicy.NET</AssemblyName>

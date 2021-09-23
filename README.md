@@ -25,10 +25,11 @@ This library will automatically set the CSP header with the configured directive
 
 ### 3. Setup
 
+**3.1 appSettings file**
+
 Add the `ContentSecurityPolicy` element to your appSettings files.
 The first children describes the content-security-policy [directives](https://content-security-policy.com/) that are named following a camel case convention.
 
-3.1 Appsettings
 
 ```json
 "ContentSecurityPolicy": {
@@ -43,7 +44,7 @@ The first children describes the content-security-policy [directives](https://co
   }
 ```
 
-3.2 ConfigureServices
+**3.2 ConfigureServices**
 
 ```C#
 services.AddContentSecurity();
@@ -64,13 +65,13 @@ IReadOnlyCollection<Directive> directives = new Directive[] {
 services.AddContentSecurity(directives);
 ```
 
-3.3 Middleware
+**3.3 Middleware**
 
 ```C#
 app.UseContentSecurityPolicy();
 ```
 
-3.4 Nonce value in script and style tags.
+**3.4 Nonce value in script and style tags.**
 
 3.4.1 Add web package assembly to your _ViewImports file.
 ```C#
@@ -85,10 +86,10 @@ app.UseContentSecurityPolicy();
 
 That's it :shrug:!
 
-(Optional)
-3.4 This package has a [default](https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET/blob/main/src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/NONCEPROVIDER.md).
+**(Optional)**
+This package has a [default](https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET/blob/main/src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/NONCEPROVIDER.md).
 
-(Note)
+**(Note)**
 The tag helper `asp-src-include` doesn't work very well with custom tag helpers. If you want to add nonce values to your included src files, follow these [instructions](docs/ASPSRCINCLUDE.md).
 
 ### 4. Examples

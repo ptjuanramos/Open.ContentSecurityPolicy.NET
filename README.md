@@ -26,17 +26,84 @@ This library will automatically set the CSP header with the configured directive
 ### 3. Setup
 
 Add the `ContentSecurityPolicy` element to your appSettings files.
+The first children describes the content-security-policy [directives](https://content-security-policy.com/) that are named following a camel case convention.
+
+3.1 Appsettings
 
 ```json
 "ContentSecurityPolicy": {
     ...
     "DefaultSrc": [ "'{nonce}'", "'self'" ],
     "ScriptSrc": [ "'{nonce}'", "'self'", "cdn.js" ],
-    "FrameAncestors": [],
-    "PluginTypes": [],
-    "ReportTo": [],
-    "NavigateTo": []
+    "FrameAncestors": ["'self'"],
+    "PluginTypes": ["'self'"],
+    "ReportTo": ["'self'"],
+    "NavigateTo": ["'self'"]
     ...
+  }
+```
+
+3.2 ConfigureServices
+
+```C#
+services.AddContentSecurity();
+
+//or without appSettings configuration
+
+IReadOnlyCollection<Directive> directives = new Directive[] {
+    DirectiveFactory.GetDirective(Policy.DefaultSrc, new string[] { "'{nonce}'", "'self'" }),
+    DirectiveFactory.GetDirective(Policy.ScriptSrc, new string[] { "'{nonce}'", "'self'", "cdn.js" }),
+    DirectiveFactory.GetDirective(Policy.FrameAncestors),
+    DirectiveFactory.GetDirective(Policy.PluginTypes),
+    DirectiveFactory.GetDirective(Policy.ReportTo),
+    DirectiveFactory.GetDirective(Policy.NavigateTo)
+};
+
+//DirectiveFactory has two overloaded methods. When you just need to use 'self' policy in a directive, you can ignore the second argument in the GetDirective method. However, if you must use the second argument to add other policies you need to explicitly add the 'self' policy in order to use it. 
+
+services.AddContentSecurity(directives);
+```
+
+3.3 Middleware
+
+```C#
+app.UseContentSecurityPolicy();
+```
+
+3.4 Nonce value in script and style tags.
+
+3.4.1 Add web package assembly to your _ViewImports file.
+```C#
+@addTagHelper *, ContentSecurityPolicy.NET.Web
+```
+
+3.4.2 Add `asp-with-nonce` attribute to your script and style tags.
+
+```HTML
+<script asp-with-nonce src="~/lib/jquery/dist/jquery.min.js"></script>
+```
+
+That's it :shrug:!
+
+(Optional)
+3.4 This package has a [default](https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET/blob/main/src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/NONCEPROVIDER.md).
+
+(Note)
+The tag helper `asp-src-include` doesn't work very well with custom tag helpers. If you want to add nonce values to your included src files, follow these [instructions](docs/ASPSRCINCLUDE.md).
+
+### 4. Examples
+
+Explanation by example:
+
+Imagine that you receive the following requirements:
+ - Web client must receive a CSP response header with, `script-src` and `default-src` directives. 
+ - Script-src directive must allow scripts tags that contains a nonce value to run.
+ - Script-src must allow jquery cdn to run.
+
+ appSettings.json
+```json
+"ContentSecurityPolicy": {
+    "ScriptSrc": [ "'{nonce}'", "'self'", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ],
   }
 ```
 

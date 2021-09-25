@@ -87,10 +87,10 @@ app.UseContentSecurityPolicy();
 That's it :shrug:!
 
 **(Optional)**
-This package has a [default](https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET/blob/main/src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/NONCEPROVIDER.md).
+This package has a [default](https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET/blob/main/src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/custom-nonce-provider.md).
 
 **(Note)**
-The tag helper `asp-src-include` doesn't work very well with custom tag helpers. If you want to add nonce values to your included src files, follow these [instructions](docs/ASPSRCINCLUDE.md).
+The tag helper `asp-src-include` doesn't work very well with custom tag helpers. If you want to add nonce values to your included src files, follow these [instructions](docs/asp-src-include-issue.md).
 
 ### 4. Examples
 

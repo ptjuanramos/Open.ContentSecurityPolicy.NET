@@ -14,8 +14,8 @@ jobs:
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: src/Ramos.ContentSecurityPolicy.NET/Ramos.ContentSecurityPolicy.NET.csproj
-          PACKAGE_NAME: Ramos.ContentSecurityPolicy.NET
+          PROJECT_FILE_PATH: src/Open.ContentSecurityPolicy.NET/Open.ContentSecurityPolicy.NET.csproj
+          PACKAGE_NAME: Open.ContentSecurityPolicy.NET
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
@@ -29,8 +29,8 @@ jobs:
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: src/Ramos.ContentSecurityPolicy.NET.Web/Ramos.ContentSecurityPolicy.NET.Web.csproj
-          PACKAGE_NAME: Ramos.ContentSecurityPolicy.NET.Web
+          PROJECT_FILE_PATH: src/Open.ContentSecurityPolicy.NET.Web/Open.ContentSecurityPolicy.NET.Web.csproj
+          PACKAGE_NAME: Open.ContentSecurityPolicy.NET.Web
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}

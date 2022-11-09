@@ -23,7 +23,7 @@ In order to solve this problem, tag helper is not the solution. You need to inje
 For example:
 
 ```HTML
-@using Ramos.ContentSecurityPolicy.NET.Providers
+@using Open.ContentSecurityPolicy.NET.Providers
 @inject INonceProvider NonceProvider
 
 <script nonce="@NonceProvider.Nonce" src="~/app/**/*.js" />

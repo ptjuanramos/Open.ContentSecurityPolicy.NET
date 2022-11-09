@@ -1,6 +1,6 @@
 # Implement your own NonceProvider
 
-This package uses a [`DefaultNonceProvider`](../src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) class as a default, you know... default nonce provider.
+This package uses a [`DefaultNonceProvider`](../src/Open.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) class as a default, you know... default nonce provider.
 
 The default nonce provider uses a 20 bytes array and a `System.Security.Cryptography` class to generate a nonce in every request. But you probably want to implement your nonce provider.
 

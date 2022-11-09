@@ -4,8 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="Ramos.ContentSecurityPolicy.NET.Web" Version="0.9.0" />
+    <ProjectReference Include="..\..\src\Open.ContentSecurityPolicy.NET.Web\Open.ContentSecurityPolicy.NET.Web.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,14 @@
-# Ramos.ContentSecurityPolicy.NET
+# Open.ContentSecurityPolicy.NET
 
 ## NuGet Packages
 
-### <span>Ramos.ContentSecurityPolicy.NET</span>
+### <span>Open.ContentSecurityPolicy.NET</span>
 
-[![nuget](https://img.shields.io/nuget/v/Ramos.ContentSecurityPolicy.NET.svg)](https://www.nuget.org/packages/Ramos.ContentSecurityPolicy.NET/)
+[![nuget](https://img.shields.io/nuget/v/Open.ContentSecurityPolicy.NET.svg)](https://www.nuget.org/packages/Open.ContentSecurityPolicy.NET/)
 
-### <span>Ramos.ContentSecurityPolicy.NET.Web</span>
+### <span>Open.ContentSecurityPolicy.NET.Web</span>
 
-[![nuget](https://img.shields.io/nuget/v/Ramos.ContentSecurityPolicy.NET.Web.svg)](https://www.nuget.org/packages/Ramos.ContentSecurityPolicy.NET.Web/)
+[![nuget](https://img.shields.io/nuget/v/Open.ContentSecurityPolicy.NET.Web.svg)](https://www.nuget.org/packages/Open.ContentSecurityPolicy.NET.Web/)
 
 ## Context
 ### 1. [What is Content Security Policy (CSP)](https://en.wikipedia.org/wiki/Content_Security_Policy)
@@ -87,10 +87,10 @@ app.UseContentSecurityPolicy();
 That's it :shrug:!
 
 **(Optional)**
-This package has a [default](https://github.com/ptjuanramos/Ramos.ContentSecurityPolicy.NET/blob/main/src/Ramos.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/NONCEPROVIDER.md).
+This package has a [default](https://github.com/ptjuanramos/Open.ContentSecurityPolicy.NET/blob/main/src/Open.ContentSecurityPolicy.NET/Providers/DefaultNonceProvider.cs) nonce provider. If you want to implement your own, follow these [instructions](docs/custom-nonce-provider.md).
 
 **(Note)**
-The tag helper `asp-src-include` doesn't work very well with custom tag helpers. If you want to add nonce values to your included src files, follow these [instructions](docs/ASPSRCINCLUDE.md).
+The tag helper `asp-src-include` doesn't work very well with custom tag helpers. If you want to add nonce values to your included src files, follow these [instructions](docs/asp-src-include-issue.md).
 
 ### 4. Examples
 

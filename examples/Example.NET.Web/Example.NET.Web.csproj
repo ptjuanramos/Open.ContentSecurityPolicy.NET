@@ -4,8 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="Open.ContentSecurityPolicy.NET.Web" Version="1.0.0" />
+    <ProjectReference Include="..\..\src\Open.ContentSecurityPolicy.NET.Web\Open.ContentSecurityPolicy.NET.Web.csproj" />
   </ItemGroup>
 
 </Project>

@@ -75,7 +75,7 @@ app.UseContentSecurityPolicy();
 
 3.4.1 Add web package assembly to your _ViewImports file.
 ```C#
-@addTagHelper *, ContentSecurityPolicy.NET.Web
+@addTagHelper *, Open.ContentSecurityPolicy.NET.Web
 ```
 
 3.4.2 Add `asp-with-nonce` attribute to your script and style tags.

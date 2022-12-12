@@ -20,7 +20,7 @@
 
 ### 2. How this library can help you
 
-This library will automatically set the CSP header with the configured directives in every response. Also, `Ramos.ContentSecurityPolicy.Web` nuget package helps you when you want to implement CSP in you web applications, containing a tag helper that places the same nonce value in a `<script...>` or `<style...>` tags. 
+This library will automatically set the CSP header with the configured directives in every response. Also, `Open.ContentSecurityPolicy.Web` nuget package helps you when you want to implement CSP in you web applications, containing a tag helper that places the same nonce value in a `<script...>` or `<style...>` tags. 
 
 
 ### 3. Setup
